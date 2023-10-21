@@ -5,8 +5,6 @@ import (
 )
 
 func main() {
-	s := []int{3, 3}
-	t := 6
-
-	fmt.Println(TwoSum(s, t))
+	s := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	fmt.Println(GroupAnagrams(s))
 }
