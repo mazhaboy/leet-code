@@ -9,5 +9,4 @@ func main() {
 	t := 6
 
 	fmt.Println(TwoSum(s, t))
-
 }
