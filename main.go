@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	s := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
-	fmt.Println(GroupAnagrams(s))
+	s := []int{2, 2, 4, 4, 3, 3}
+	fmt.Println(TopKFrequent(s, 3))
 }
