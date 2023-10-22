@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/leet-code/two_pointers"
 )
 
 func main() {
-	s := []int{1, 2, 3, 5, 6, 7, 8, -1, -1, -1, -1}
-	fmt.Println(LongestConsecutive(s))
+	s := "7k75"
+	fmt.Println(two_pointers.IsPalindrome(s))
 }

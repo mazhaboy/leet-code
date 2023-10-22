@@ -1,4 +1,4 @@
-package main
+package arrays_hashing
 
 type MyTwoSumMap struct {
 	Dict map[int]int
