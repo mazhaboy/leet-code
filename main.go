@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	s := []int{2, 2, 4, 4, 3, 3}
-	fmt.Println(TopKFrequent(s, 3))
+	s := []int{1, 2, 3, 4}
+	fmt.Println(ProductExceptSelf(s))
 }
