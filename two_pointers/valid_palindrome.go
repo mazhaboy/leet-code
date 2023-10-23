@@ -9,7 +9,7 @@ func IsPalindrome(s string) bool {
 	return false
 }
 
-func IsPalindrome1(s string) bool {
+func IsPalindrome2(s string) bool {
 	str := strings.ToLower(s)
 	str = RemoveNonAlphanumeric(str)
 	if len(str) == 1 {

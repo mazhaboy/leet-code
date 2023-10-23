@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
-	s := "7k75"
-	fmt.Println(two_pointers.IsPalindrome(s))
+	s := []int{1, 0, 1, 2, -1, -4}
+	fmt.Println(two_pointers.ThreeSum(s))
+
 }
