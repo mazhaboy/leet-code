@@ -13,11 +13,18 @@ func NewMyMaxAreaMap() *MyMaxAreaMap {
 
 func MaxArea(height []int) int {
 	maxA := 0
-	//for i := 0; i < len(height); i++ {
-	//	h2 := height[i]
-	//	x2 := i + 1
-	//
-	//}
+	l := 0
+	r := len(height) - 1
+
+	for l < r {
+		area := Min(height[l], height[r]) * (r - l)
+		maxA = MaxA(maxA, area)
+		if height[l] < height[r] {
+			l++
+		} else {
+			r--
+		}
+	}
 
 	return maxA
 }
