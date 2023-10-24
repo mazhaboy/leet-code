@@ -2,18 +2,8 @@ package two_pointers
 
 import (
 	"fmt"
+	"sort"
 )
-
-type MyThreeSumMap struct {
-	Dict map[int]int
-}
-
-func NewMyThreeSumMap() *MyThreeSumMap {
-	newMyThreeSumMap := new(MyThreeSumMap)
-	dict := make(map[int]int, 0)
-	newMyThreeSumMap.Dict = dict
-	return newMyThreeSumMap
-}
 
 func ThreeSum(nums []int) [][]int {
 	res := make([][]int, 0)
@@ -22,41 +12,35 @@ func ThreeSum(nums []int) [][]int {
 		return res
 	}
 
-	i := 0
-	j := 1
-	k := 2
-	for k < len(nums) {
-		newSlice := make([]int, 0)
-		fmt.Printf("k: %d, j: %d, i: %d\n", k, j, i)
-		if nums[i]+nums[j]+nums[k] == 0 {
-			newSlice = append(newSlice, nums[i], nums[j], nums[k])
-			res = append(res, newSlice)
-		}
-		k++
-	}
-	fmt.Println(k)
+	sort.Slice(nums, func(i, j int) bool {
+		return nums[i] < nums[j]
+	})
 
-	for j < len(nums)-1 {
-		newSlice := make([]int, 0)
-		fmt.Printf("k: %d, j: %d, i: %d\n", k, j, i)
-		if nums[i]+nums[j]+nums[len(nums)-1] == 0 {
-			newSlice = append(newSlice, nums[i], nums[j], nums[len(nums)-1])
-			res = append(res, newSlice)
-		}
-		j++
-	}
-	fmt.Println(j)
+	fmt.Println(nums)
 
-	for i < len(nums)-2 {
-		newSlice := make([]int, 0)
-		fmt.Printf("k: %d, j: %d, i: %d\n", k, j, i)
-		if nums[i]+nums[len(nums)-2]+nums[len(nums)-1] == 0 {
-			newSlice = append(newSlice, nums[i], nums[len(nums)-2], nums[len(nums)-1])
-			res = append(res, newSlice)
+	for i, v := range nums {
+		if i > 0 && nums[i-1] == v {
+			continue
 		}
-		i++
+		l := i + 1
+		r := len(nums) - 1
+		for l < r {
+			threeSum := v + nums[l] + nums[r]
+			if threeSum > 0 {
+				r--
+			} else if threeSum < 0 {
+				l++
+			} else {
+				newS := make([]int, 0)
+				newS = append(newS, v, nums[l], nums[r])
+				res = append(res, newS)
+				l++
+				for nums[l] == nums[l-1] && l < r {
+					l++
+				}
+			}
+		}
 	}
-	fmt.Println(i)
 
 	return res
 }
