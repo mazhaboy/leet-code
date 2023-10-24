@@ -16,13 +16,47 @@ func NewMyThreeSumMap() *MyThreeSumMap {
 }
 
 func ThreeSum(nums []int) [][]int {
-	d := NewMyThreeSumMap()
 	res := make([][]int, 0)
-	for i := range nums {
-		d.Dict[nums[i]]++
+
+	if len(nums) < 3 {
+		return res
 	}
 
-	fmt.Println(d.Dict)
+	i := 0
+	j := 1
+	k := 2
+	for k < len(nums) {
+		newSlice := make([]int, 0)
+		fmt.Printf("k: %d, j: %d, i: %d\n", k, j, i)
+		if nums[i]+nums[j]+nums[k] == 0 {
+			newSlice = append(newSlice, nums[i], nums[j], nums[k])
+			res = append(res, newSlice)
+		}
+		k++
+	}
+	fmt.Println(k)
+
+	for j < len(nums)-1 {
+		newSlice := make([]int, 0)
+		fmt.Printf("k: %d, j: %d, i: %d\n", k, j, i)
+		if nums[i]+nums[j]+nums[len(nums)-1] == 0 {
+			newSlice = append(newSlice, nums[i], nums[j], nums[len(nums)-1])
+			res = append(res, newSlice)
+		}
+		j++
+	}
+	fmt.Println(j)
+
+	for i < len(nums)-2 {
+		newSlice := make([]int, 0)
+		fmt.Printf("k: %d, j: %d, i: %d\n", k, j, i)
+		if nums[i]+nums[len(nums)-2]+nums[len(nums)-1] == 0 {
+			newSlice = append(newSlice, nums[i], nums[len(nums)-2], nums[len(nums)-1])
+			res = append(res, newSlice)
+		}
+		i++
+	}
+	fmt.Println(i)
 
 	return res
 }

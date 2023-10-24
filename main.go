@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-	s := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
-	fmt.Println(two_pointers.MaxArea(s))
-
+	k := []int{2, 7, 11, 15}
+	fmt.Println(two_pointers.TwoSum2(k, 9))
 }
