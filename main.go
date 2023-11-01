@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	s := []int{312884470}
-	fmt.Println(binary_search.MinEatingSpeed(s, 312884469))
+	s := []int{5, 1, 3}
+	fmt.Println(binary_search.SearchRotatedArray(s, 5))
 }
 
 //const (
