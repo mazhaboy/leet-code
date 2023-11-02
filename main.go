@@ -2,12 +2,40 @@ package main
 
 import (
 	"fmt"
-	"github.com/leet-code/binary_search"
+	"github.com/leet-code/tree"
 )
 
 func main() {
-	s := []int{5, 1, 3}
-	fmt.Println(binary_search.SearchRotatedArray(s, 5))
+
+	t1 := &tree.TreeNode{
+		Val: 1,
+		Left: &tree.TreeNode{
+			Val:   2,
+			Left:  nil,
+			Right: nil,
+		},
+		Right: &tree.TreeNode{
+			Val:   3,
+			Left:  nil,
+			Right: nil,
+		},
+	}
+
+	t2 := &tree.TreeNode{
+		Val: 1,
+		Left: &tree.TreeNode{
+			Val:   2,
+			Left:  nil,
+			Right: nil,
+		},
+		Right: &tree.TreeNode{
+			Val:   3,
+			Left:  nil,
+			Right: nil,
+		},
+	}
+
+	fmt.Println(tree.IsSameTree(t1, t2))
 }
 
 //const (

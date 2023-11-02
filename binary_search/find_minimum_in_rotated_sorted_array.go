@@ -1,6 +1,6 @@
 package binary_search
 
-func findMin(nums []int) int {
+func FindMin(nums []int) int {
 	l := 0
 	r := len(nums) - 1
 	res := nums[l]
