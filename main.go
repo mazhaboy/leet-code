@@ -15,27 +15,31 @@ func main() {
 			Right: nil,
 		},
 		Right: &tree.TreeNode{
-			Val:   3,
-			Left:  nil,
-			Right: nil,
+			Val:  3,
+			Left: nil,
+			Right: &tree.TreeNode{
+				Val:   5,
+				Left:  nil,
+				Right: nil,
+			},
 		},
 	}
 
-	t2 := &tree.TreeNode{
-		Val: 1,
-		Left: &tree.TreeNode{
-			Val:   2,
-			Left:  nil,
-			Right: nil,
-		},
-		Right: &tree.TreeNode{
-			Val:   3,
-			Left:  nil,
-			Right: nil,
-		},
-	}
+	//t2 := &tree.TreeNode{
+	//	Val: 1,
+	//	Left: &tree.TreeNode{
+	//		Val:   2,
+	//		Left:  nil,
+	//		Right: nil,
+	//	},
+	//	Right: &tree.TreeNode{
+	//		Val:   3,
+	//		Left:  nil,
+	//		Right: nil,
+	//	},
+	//}
 
-	fmt.Println(tree.IsSubtree(t1, t2))
+	fmt.Println(tree.LevelOrder(t1))
 }
 
 //const (
