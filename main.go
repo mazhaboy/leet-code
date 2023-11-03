@@ -35,7 +35,7 @@ func main() {
 		},
 	}
 
-	fmt.Println(tree.IsSameTree(t1, t2))
+	fmt.Println(tree.IsSubtree(t1, t2))
 }
 
 //const (
