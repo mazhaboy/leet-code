@@ -65,12 +65,11 @@ var (
 )
 
 func GenerateParenthesis(n int) []string {
-	nGlobal = n
-	backtracking(0, 0)
+	backtracking(0, 0, n)
 	return res
 }
 
-func backtracking(opened, closed int) {
+func backtracking(opened, closed, nGlobal int) {
 	fmt.Println(s.Stack)
 	if opened == nGlobal && closed == nGlobal && opened == closed {
 		res = append(res, s.StirngReverse())
@@ -79,13 +78,13 @@ func backtracking(opened, closed int) {
 
 	if opened < nGlobal {
 		s.Push("(")
-		backtracking(opened+1, closed)
+		backtracking(opened+1, closed, nGlobal)
 		s.Pop()
 	}
 
 	if closed < opened {
 		s.Push(")")
-		backtracking(opened, closed+1)
+		backtracking(opened, closed+1, nGlobal)
 		s.Pop()
 	}
 }
