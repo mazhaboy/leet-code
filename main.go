@@ -2,19 +2,12 @@ package main
 
 import (
 	"fmt"
+	"github.com/leet-code/yandex"
 )
 
 func main() {
-	var c int
-	fmt.Scan(&c)
-	inputArr := make([]int, c)
-	for i := 0; i < len(inputArr); i++ {
-		fmt.Scan(&inputArr[i])
-	}
-	res := DeleteDuplicates(inputArr)
-	for i := range res {
-		fmt.Println(res[i])
-	}
+	s := "pwwkew"
+	fmt.Println(yandex.LengthOfLongestSubstring(s))
 }
 
 func DeleteDuplicates(arr []int) []int {
