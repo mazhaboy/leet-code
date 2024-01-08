@@ -1,37 +1,30 @@
 package hash_table
 
-type MyHashSet struct {
-	arr []int
+type MyHashMap struct {
+	arr [1000001]int
 }
 
-func Constructor() MyHashSet {
-	myHashSet := new(MyHashSet)
-	arr := make([]int, 1000001)
-	myHashSet.arr = arr
-	return *myHashSet
-}
-
-func (this *MyHashSet) Add(key int) {
-	y := key % 1000001
-	this.arr[y] = y
-	if key == 0 {
-		this.arr[0] = 1
+func ConstructorMyHashMap() MyHashMap {
+	myHashMap := new(MyHashMap)
+	arr := [1000001]int{}
+	for i := range arr {
+		arr[i] = -1
 	}
+	myHashMap.arr = arr
+	return *myHashMap
 }
 
-func (this *MyHashSet) Remove(key int) {
+func (this *MyHashMap) Put(key int, value int) {
 	y := key % 1000001
-	this.arr[y] = 0
+	this.arr[y] = value
 }
 
-func (this *MyHashSet) Contains(key int) bool {
+func (this *MyHashMap) Get(key int) int {
 	y := key % 1000001
+	return this.arr[y]
+}
 
-	if key == 0 && this.arr[y] == 1 {
-		return true
-	} else if this.arr[y] == y && key != 0 {
-		return true
-	}
-
-	return false
+func (this *MyHashMap) Remove(key int) {
+	y := key % 1000001
+	this.arr[y] = -1
 }
