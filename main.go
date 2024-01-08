@@ -2,156 +2,72 @@ package main
 
 import (
 	"fmt"
-	"github.com/leet-code/yandex"
+	"github.com/leet-code/hash_table"
 )
 
 func main() {
-	s := "pwwkew"
-	fmt.Println(yandex.LengthOfLongestSubstring(s))
+	new := hash_table.Constructor()
+	new.Add(0)
+	new.Add(5)
+	new.Add(6)
+	new.Add(10)
+	fmt.Println(new)
+	new.Contains(0)
+	new.Remove(0)
+	fmt.Println(new.Contains(0))
+	fmt.Println(new)
+
 }
 
-func DeleteDuplicates(arr []int) []int {
-	res := make([]int, 0)
-	if len(arr) == 0 {
-		return []int{}
-	}
-	prev := arr[0]
-	res = append(res, prev)
-	for i := 1; i < len(arr); i++ {
-		if prev != arr[i] {
-			res = append(res, arr[i])
+func addBinary(a string, b string) string {
+	n := Max(len(a), len(b))
+	//reverse a, b
+	res := ""
+	a = reverse(a)
+	b = reverse(b)
+	i := 0
+	memory := 0
+	for i < n {
+		if len(a) <= i {
+			res += string(rune((int(b[i]) - '0' + memory) % 2))
+			if int(b[i])+memory >= 2 {
+				memory = 1
+			} else {
+				memory = 0
+			}
+		} else if len(b) <= i {
+			res += string(rune((int(a[i]) + memory) % 2))
+			if int(a[i])+memory >= 2 {
+				memory = 1
+			} else {
+				memory = 0
+			}
+		} else {
+			res += string(rune((int(a[i]) + memory + int(b[i])) % 2))
+			if int(a[i])+int(b[i])+memory >= 2 {
+				memory = 1
+			} else {
+				memory = 0
+			}
 		}
-		prev = arr[i]
+		i++
+
+	}
+	return res // reverse res
+}
+
+func reverse(str string) string {
+	res := ""
+	for i := range str {
+		res = string(str[i]) + res
 	}
 	return res
 }
 
-//func max(x, y int) int {
-//	if x > y {
-//		return x
-//	}
-//
-//	return y
-//}
+func Max(a, b int) int {
+	if a > b {
+		return a
+	}
 
-//package main
-//
-//import (
-//	"fmt"
-//	"github.com/leet-code/tree"
-//)
-//
-//func main() {
-//
-//	t1 := &tree.TreeNode{
-//		Val:  8,
-//		Left: nil,
-//		Right: &tree.TreeNode{
-//			Val: 10,
-//			Left: &tree.TreeNode{
-//				Val:   9,
-//				Left:  nil,
-//				Right: nil,
-//			},
-//			Right: &tree.TreeNode{
-//				Val:  11,
-//				Left: nil,
-//				Right: &tree.TreeNode{
-//					Val:   12,
-//					Left:  nil,
-//					Right: nil,
-//				},
-//			},
-//		},
-//	}
-//
-//	//t2 := &tree.TreeNode{
-//	//	Val: 1,
-//	//	Left: &tree.TreeNode{
-//	//		Val:   2,
-//	//		Left:  nil,
-//	//		Right: nil,
-//	//	},
-//	//	Right: &tree.TreeNode{
-//	//		Val:   3,
-//	//		Left:  nil,
-//	//		Right: nil,
-//	//	},
-//	//}
-//
-//	fmt.Println(tree.KthSmallest(t1, 1))
-//}
-//
-////const (
-////	workers = 200
-////	job     = 1000
-////)
-////
-////func init() {
-////	rand.Seed(time.Now().UnixNano())
-////}
-////
-////func main() {
-////	requests := 100
-////	ctx := context.Background()
-////	ch := make(chan resp, requests)
-////	wg := sync.WaitGroup{}
-////	for i := 1; i <= requests; i++ {
-////		wg.Add(1)
-////		go func(iter int) {
-////			defer wg.Done()
-////			fmt.Println(iter)
-////			DoReq(ctx, ch)
-////		}(i)
-////	}
-////
-////	wg.Wait()
-////	for i := 1; i <= requests; i++ {
-////		fmt.Println(<-ch)
-////	}
-////
-////	log.Printf("%d Requests Completed", workers)
-////}
-////
-////type resp struct {
-////	Status int   `json:"status"`
-////	Err    error `json:"err"`
-////}
-////
-////func DoReq(ctx context.Context, ch chan<- resp) {
-////	ctx, cancel := context.WithTimeout(ctx, time.Second*15)
-////	defer cancel()
-////	time.Sleep(3 * time.Second)
-////
-////	posturl := "http://localhost:8115/api/cpms/v1/products/sku"
-////
-////	body := []byte(`{
-////	  "sku": "41344",
-////	  "price": 27900,
-////	  "amount": 27900,
-////	  "quantity": 1
-////	}`)
-////
-////	r, err := http.NewRequest("POST", posturl, bytes.NewBuffer(body))
-////	if err != nil {
-////		fmt.Println(err)
-////	}
-////
-////	r.Header.Add("Content-Type", "application/json")
-////
-////	client := &http.Client{}
-////	res, err := client.Do(r)
-////	if err != nil {
-////		ch <- resp{
-////			Status: res.StatusCode,
-////			Err:    errors.New("cpms error"),
-////		}
-////	}
-////
-////	if res.StatusCode == http.StatusOK {
-////		ch <- resp{
-////			Status: 200,
-////			Err:    nil,
-////		}
-////	}
-////}
+	return b
+}
